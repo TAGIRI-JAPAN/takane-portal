@@ -124,7 +124,7 @@
     } catch (e) {
       site = { profile: {}, documents: [], links: [], images: [] };
     }
-    site.documents ||= []; site.links ||= []; site.images ||= []; site.profile ||= {};
+    site.documents ||= []; site.links ||= []; site.images ||= []; site.videos ||= []; site.profile ||= {};
     renderAll();
     setDirty(false);
   }
@@ -309,6 +309,94 @@
     setDirty(true); renderDocs();
   });
 
+  /* ---------- videos ---------- */
+  const MAX_VIDEO = 60 * 1024 * 1024;
+  function fmtDur(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); }
+  function videoPoster(file, at = 1.5) {
+    return new Promise((ok) => {
+      const url = URL.createObjectURL(file); const v = document.createElement('video');
+      v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url;
+      let done = false;
+      const finish = (blob, dur) => { if (done) return; done = true; URL.revokeObjectURL(url); ok({ blob, duration: dur }); };
+      v.addEventListener('loadedmetadata', () => { v.currentTime = Math.min(at, Math.max(0, v.duration - 0.1)); });
+      v.addEventListener('seeked', () => {
+        try {
+          const c = document.createElement('canvas'); const s = Math.min(1, 960 / v.videoWidth);
+          c.width = Math.round(v.videoWidth * s); c.height = Math.round(v.videoHeight * s);
+          c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+          c.toBlob(b => finish(b, v.duration), 'image/jpeg', 0.82);
+        } catch (e) { finish(null, v.duration); }
+      });
+      v.addEventListener('error', () => finish(null, 0));
+      setTimeout(() => finish(null, v.duration || 0), 15000);
+    });
+  }
+  function renderVideos() {
+    const list = site.videos;
+    $('vidItems').innerHTML = list.length ? list.map((v, i) => `
+      <li class="item l-wide" data-i="${i}">
+        <div class="thumb wide">${v.poster ? `<img src="${esc(v.poster)}" alt="">` : '動画'}</div>
+        <div class="fields">
+          <input data-f="title" value="${esc(v.title)}" placeholder="タイトル">
+          <input data-f="description" value="${esc(v.description || '')}" placeholder="説明（任意）">
+          <div class="file">${esc(v.file)}　${esc(v.duration || '')}</div>
+        </div>
+        ${toolsHtml(i, list.length, '<button class="icon" data-act="poster" title="サムネイル画像を差し替え">サムネ</button>')}
+      </li>`).join('') : '<li class="hint">まだ動画がありません。</li>';
+  }
+  async function addVideos(files) {
+    for (const f of files) {
+      if (!/\.(mp4|mov|m4v)$/i.test(f.name)) { toast(f.name + ' はmp4ではありません'); continue; }
+      if (f.size > MAX_VIDEO) { toast(f.name + ' は60MBを超えています'); continue; }
+      const id = uid();
+      const path = `uploads/videos/${id}-${safeName(f.name)}.mp4`;
+      const li = document.createElement('li'); li.className = 'item uploading';
+      li.innerHTML = `<div class="thumb wide">動画</div><div class="fields"><strong>${esc(f.name)}</strong><span class="prog">サムネイル作成中…</span></div><div></div>`;
+      $('vidItems').prepend(li);
+      try {
+        const { blob, duration } = await videoPoster(f);
+        li.querySelector('.prog').textContent = 'アップロード中…（' + fmtSize(f.size) + '、数分かかることがあります）';
+        await putFile(path, await blobToBase64(f), '動画を追加: ' + f.name);
+        let poster = '';
+        if (blob) { poster = `uploads/posters/${id}.jpg`; await putFile(poster, await blobToBase64(blob), 'サムネイル: ' + f.name); }
+        site.videos.push({ id, title: f.name.replace(/\.[^.]+$/, ''), description: '', file: path, poster, duration: duration ? fmtDur(duration) : '' });
+        setDirty(true); renderVideos(); toast(f.name + ' を追加しました');
+      } catch (e) { li.remove(); toast('失敗: ' + e.message); }
+    }
+  }
+  bindDrop($('vidDrop'), $('vidFile'), $('vidPick'), addVideos);
+  $('vidItems').addEventListener('input', e => {
+    const li = e.target.closest('.item'); const f = e.target.dataset.f; if (!li || !f) return;
+    site.videos[+li.dataset.i][f] = e.target.value; setDirty(true);
+  });
+  $('vidItems').addEventListener('click', async e => {
+    const b = e.target.closest('button[data-act]'); const li = e.target.closest('.item'); if (!b || !li) return;
+    const i = +li.dataset.i, v = site.videos[i];
+    if (b.dataset.act === 'poster') {
+      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
+      inp.onchange = async () => {
+        const f = inp.files[0]; if (!f) return;
+        b.disabled = true; b.textContent = '送信中';
+        try {
+          const { blob } = await shrinkImage(f, 1280);
+          const path = `uploads/posters/${v.id}.jpg`;
+          await putFile(path, await blobToBase64(blob), 'サムネイル差し替え: ' + v.title);
+          v.poster = path + '?v=' + Date.now().toString(36);
+          setDirty(true); renderVideos(); toast('サムネイルを差し替えました');
+        } catch (err) { toast('失敗: ' + err.message); renderVideos(); }
+      };
+      inp.click(); return;
+    }
+    if (b.dataset.act === 'del') {
+      if (!confirm(`「${v.title}」を削除しますか？動画ファイルも消えます。`)) return;
+      b.disabled = true;
+      try { await deleteFile(v.file, '動画を削除: ' + v.title); if (v.poster) await deleteFile(v.poster.split('?')[0], 'サムネイル削除'); }
+      catch (err) { toast('削除に失敗: ' + err.message); b.disabled = false; return; }
+      site.videos.splice(i, 1);
+    } else move(site.videos, i, b.dataset.act === 'up' ? -1 : 1);
+    setDirty(true); renderVideos();
+  });
+
   /* ---------- links ---------- */
   function renderLinks() {
     const list = site.links;
@@ -406,11 +494,15 @@
     for (const [id, k] of Object.entries(PF)) $(id).value = p[k] || '';
     $('pTimeline').value = (p.timeline || []).map(t => `${t.year} | ${t.text}`).join('\n');
     $('profPhoto').innerHTML = p.photo ? `<img src="${esc(p.photo)}" alt="">` : '写真なし';
+    $('pCutout').checked = !!p.photoCutout;
+    $('pIntro').checked = p.intro !== false;
   }
   function readProfileForm() {
     if (!site) return;
     const p = site.profile;
     for (const [id, k] of Object.entries(PF)) p[k] = $(id).value.trim();
+    p.photoCutout = $('pCutout').checked;
+    p.intro = $('pIntro').checked;
     p.timeline = $('pTimeline').value.split('\n').map(l => l.trim()).filter(Boolean).map(l => {
       const m = l.match(/^(.*?)\s*[|｜]\s*(.*)$/); return m ? { year: m[1].trim(), text: m[2].trim() } : { year: '', text: l };
     });
@@ -432,7 +524,7 @@
   });
   $('profPhotoClear').addEventListener('click', () => { site.profile.photo = ''; setDirty(true); renderProfile(); });
 
-  function renderAll() { renderDocs(); renderLinks(); renderImages(); renderProfile(); }
+  function renderAll() { renderDocs(); renderVideos(); renderLinks(); renderImages(); renderProfile(); }
 
   boot();
 })();

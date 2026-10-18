@@ -5,46 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>髙根 未来 | ポータル</title>
-<meta name="description" content="髙根 未来の資料・サイト・写真をまとめたポータルです。">
+<meta name="description" content="髙根 未来の資料・動画・サイト・写真をまとめたポータルです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:ital,wght@0,500;0,700;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23c43b2a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' font-family='serif' font-weight='700' fill='white'%3E滾%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2307090e'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' font-family='serif' font-weight='700' fill='%23cf961c'%3E滾%3C/text%3E%3C/svg%3E">
 </head>
-<body>
+<body class="intro-on">
+
+<div class="intro" id="intro">
+  <video id="introVideo" muted playsinline preload="auto" poster="assets/intro-end.jpg">
+    <source src="assets/intro.mp4" type="video/mp4">
+  </video>
+  <button class="skip" id="introSkip" type="button">スキップ</button>
+</div>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#"><span class="seal-mini">滾</span><span id="brandName">髙根 未来</span></a>
+    <a class="brand" href="#"><img src="assets/lettering/tagiru.png" alt="滾"><span id="brandName">髙根 未来</span></a>
     <nav class="nav">
       <a href="#profile">プロフィール</a>
       <a href="#docs">資料</a>
-      <a href="#links">リンク</a>
+      <a href="#videos">動画</a>
+      <a href="#links">サイト</a>
       <a href="#gallery">写真</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
+  <img class="mark" src="assets/lettering/tagiru.png" alt="" aria-hidden="true">
   <div class="wrap">
-    <div class="hero-photo empty" id="heroPhoto"><div class="seal">滾</div></div>
     <div class="hero-text">
-      <p class="role" id="role"></p>
-      <h1 class="name"><span id="name"></span><small id="reading"></small></h1>
-      <p class="lead" id="lead"></p>
-      <div class="hero-actions" id="actions"></div>
+      <img class="lettering-title rise" src="assets/lettering/title.png" alt="代表取締役">
+      <img class="lettering-name rise" src="assets/lettering/name.png" alt="髙根 未来">
+      <p class="reading rise" id="reading"></p>
+      <img class="lettering-company rise" src="assets/lettering/company.png" alt="株式会社TAGIRI">
+      <p class="lead rise" id="lead"></p>
+      <div class="hero-actions rise" id="actions"></div>
     </div>
-    <div class="tate" id="tate"><span id="tagline"></span><div class="seal">滾</div></div>
+    <div class="tate rise" id="tate"><span id="tagline"></span><img class="seal" src="assets/lettering/tagiru.png" alt="滾"></div>
+    <div class="hero-photo rise" id="heroPhoto"></div>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
 
 <main>
   <section class="section" id="profile">
     <div class="wrap">
-      <div class="section-head"><h2>プロフィール</h2><span>Profile</span></div>
+      <div class="section-head rv"><h2>プロフィール</h2><span>Profile</span></div>
       <div class="profile">
-        <div class="message" id="message"></div>
+        <div class="message rv" id="message"></div>
         <ol class="timeline" id="timeline"></ol>
       </div>
     </div>
@@ -52,30 +65,38 @@
 
   <section class="section" id="docs">
     <div class="wrap">
-      <div class="section-head"><h2>資料</h2><span>Documents</span><span class="count" id="docCount"></span></div>
+      <div class="section-head rv"><h2>資料</h2><span>Documents</span><span class="count" id="docCount"></span></div>
       <ul class="docs" id="docList"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="videos">
+    <div class="wrap">
+      <div class="section-head rv"><h2>動画</h2><span>Videos</span></div>
+      <ul class="videos" id="videoList"></ul>
     </div>
   </section>
 
   <section class="section" id="links">
     <div class="wrap">
-      <div class="section-head"><h2>サイト</h2><span>Links</span></div>
+      <div class="section-head rv"><h2>サイト</h2><span>Links</span></div>
       <ul class="links" id="linkList"></ul>
     </div>
   </section>
 
   <section class="section" id="gallery">
     <div class="wrap">
-      <div class="section-head"><h2>写真</h2><span>Gallery</span></div>
+      <div class="section-head rv"><h2>写真</h2><span>Gallery</span></div>
       <div class="gallery" id="galleryList"></div>
     </div>
   </section>
 </main>
 
 <footer class="foot">
+  <img class="mark" src="assets/lettering/tagiru.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div>
-      <p class="fname" id="footName"></p>
+      <p class="fname"><img src="assets/lettering/name.png" alt="髙根 未来"></p>
       <div id="footContact"></div>
     </div>
     <div class="copy" id="copy"></div>
@@ -91,6 +112,7 @@
 (async function () {
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ICON = {
     mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
     phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
@@ -99,32 +121,51 @@
     dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14"/></svg>'
   };
 
+  /* ---- data ---- */
   let data;
   try {
     const res = await fetch('data/site.json?v=' + Date.now(), { cache: 'no-store' });
     data = await res.json();
   } catch (e) {
-    document.body.innerHTML = '<p style="padding:40px">読み込みに失敗しました。少し待って再読み込みしてください。</p>';
-    return;
+    data = { profile: {} };
   }
   const p = data.profile || {};
 
-  /* hero */
+  /* ---- opening ---- */
+  const intro = $('intro'), iv = $('introVideo');
+  let introDone = false;
+  function finishIntro() {
+    if (introDone) return; introDone = true;
+    try { sessionStorage.setItem('tp_intro_seen', '1'); } catch (e) {}
+    intro.classList.add('done');
+    document.body.classList.remove('intro-on');
+    requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
+    setTimeout(() => intro.remove(), 1300);
+  }
+  let seen = false; try { seen = !!sessionStorage.getItem('tp_intro_seen'); } catch (e) {}
+  if (p.intro === false || seen || reduced) {
+    intro.remove(); document.body.classList.remove('intro-on'); document.body.classList.add('ready'); introDone = true;
+  } else {
+    iv.addEventListener('ended', () => setTimeout(finishIntro, 500));
+    $('introSkip').addEventListener('click', finishIntro);
+    const t = setTimeout(finishIntro, 16000);
+    iv.play().catch(() => { clearTimeout(t); finishIntro(); });
+  }
+
+  /* ---- hero ---- */
   document.title = (p.name || '') + ' | ポータル';
   $('brandName').textContent = p.name || '';
-  $('role').textContent = p.title || '';
-  $('name').textContent = p.name || '';
   $('reading').textContent = p.reading || '';
   $('lead').textContent = p.lead || '';
   $('tagline').innerHTML = [...(p.tagline || '')].map(c => '<i>' + esc(c) + '</i>').join('');
   if (!p.tagline) $('tate').remove();
   const ph = $('heroPhoto');
   if (p.photo) {
-    ph.classList.remove('empty');
+    ph.classList.add(p.photoCutout ? 'cutout' : 'boxed');
     ph.innerHTML = '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '">';
   } else {
     ph.remove();
-    document.querySelector('.hero .wrap').classList.add('no-photo');
+    document.querySelector('.hero .wrap').style.gridTemplateColumns = '1fr auto';
   }
   const acts = [];
   if (p.email) acts.push('<a class="btn primary" href="mailto:' + esc(p.email) + '">' + ICON.mail + 'メール</a>');
@@ -132,49 +173,69 @@
   if (p.website) acts.push('<a class="btn" href="' + esc(p.website) + '" target="_blank" rel="noopener">' + ICON.site + '会社サイト</a>');
   $('actions').innerHTML = acts.join('');
 
-  /* profile */
+  /* ---- marquee ---- */
+  const words = [p.tagline, p.title, 'TAKUMI～匠～', 'タカネ式', ...(data.links || []).map(l => l.title)].filter(Boolean);
+  const uniq = [...new Set(words)];
+  const row = uniq.map(w => '<span>' + esc(w) + '</span>').join('');
+  $('marquee').innerHTML = row + row;
+
+  /* ---- profile ---- */
   const paras = String(p.message || '').split(/\n+/).filter(Boolean).map(t => '<p>' + esc(t) + '</p>');
-  if (paras.length) paras.push('<p class="sign">' + esc(p.name) + '</p>');
+  if (paras.length) paras.push('<p class="sign"><img src="assets/lettering/name.png" alt="' + esc(p.name) + '"></p>');
   $('message').innerHTML = paras.join('');
   $('timeline').innerHTML = (p.timeline || []).map(t =>
-    '<li><span class="year">' + esc(t.year) + '</span>' + esc(t.text) + '</li>').join('');
-  if (!paras.length && !(p.timeline || []).length) $('profile').style.display = 'none';
+    '<li class="rv"><span class="year">' + esc(t.year) + '</span>' + esc(t.text) + '</li>').join('');
+  if (!paras.length && !(p.timeline || []).length) $('profile').remove();
 
-  /* documents */
+  /* ---- documents ---- */
   const docs = data.documents || [];
   $('docCount').textContent = docs.length ? docs.length + '件' : '';
   $('docList').innerHTML = docs.length ? docs.map(d => {
     const thumb = d.thumb ? '<img src="' + esc(d.thumb) + '" alt="">' : ICON.pdf;
     const meta = [d.size, d.date].filter(Boolean).map(esc).join('　');
-    return '<li class="doc">' +
+    return '<li class="doc rv">' +
       '<div class="doc-thumb">' + thumb + '</div>' +
       '<div><h3>' + esc(d.title) + '</h3>' + (d.description ? '<p>' + esc(d.description) + '</p>' : '') +
       (meta ? '<div class="meta">' + meta + '</div>' : '') + '</div>' +
       '<a class="btn" href="' + esc(d.file) + '" target="_blank" rel="noopener" download>' + ICON.dl + '開く / 保存</a>' +
       '</li>';
-  }).join('') : '<li class="empty-note">資料は準備中です。</li>';
+  }).join('') : '<li class="empty-note rv">資料は準備中です。</li>';
 
-  /* links */
+  /* ---- videos ---- */
+  const vids = data.videos || [];
+  $('videoList').innerHTML = vids.length ? vids.map((v, i) =>
+    '<li class="video-card rv' + (i === 0 && vids.length % 2 === 1 ? ' featured' : '') + '" data-i="' + i + '">' +
+    '<div class="frame"><img src="' + esc(v.poster) + '" alt="" loading="lazy"><div class="play"><b></b></div></div>' +
+    '<h3>' + esc(v.title) + '</h3>' + (v.description ? '<p>' + esc(v.description) + '</p>' : '') +
+    (v.duration ? '<div class="meta">' + esc(v.duration) + '</div>' : '') + '</li>').join('')
+    : '<li class="empty-note rv">動画は準備中です。</li>';
+  $('videoList').addEventListener('click', e => {
+    const f = e.target.closest('.frame'); if (!f) return;
+    const v = vids[+f.closest('.video-card').dataset.i];
+    document.querySelectorAll('#videoList video').forEach(x => x.pause());
+    f.style.cursor = 'default';
+    f.innerHTML = '<video controls autoplay playsinline src="' + esc(v.file) + '" poster="' + esc(v.poster) + '"></video>';
+  });
+
+  /* ---- links ---- */
   const links = data.links || [];
   $('linkList').innerHTML = links.length ? links.map(l => {
     let host = '';
     try { host = new URL(l.url).hostname.replace(/^www\./, ''); } catch (e) {}
-    const cover = l.image
-      ? '<img src="' + esc(l.image) + '" alt="">'
-      : '<span class="ini">' + esc(host || l.title) + '</span>';
-    return '<li><a class="link-card" href="' + esc(l.url) + '" target="_blank" rel="noopener">' +
+    const cover = l.image ? '<img src="' + esc(l.image) + '" alt="">' : '<span class="ini">' + esc(host || l.title) + '</span>';
+    return '<li class="rv"><a class="link-card" href="' + esc(l.url) + '" target="_blank" rel="noopener">' +
       '<div class="cover">' + cover + '</div>' +
       '<div class="body"><h3>' + esc(l.title) + '</h3>' + (l.description ? '<p>' + esc(l.description) + '</p>' : '') +
       (host ? '<div class="domain"><img src="https://www.google.com/s2/favicons?sz=32&domain=' + esc(host) + '" alt="">' + esc(host) + '</div>' : '') +
       '</div></a></li>';
-  }).join('') : '<li class="empty-note">リンクは準備中です。</li>';
+  }).join('') : '<li class="empty-note rv">リンクは準備中です。</li>';
 
-  /* gallery */
+  /* ---- gallery ---- */
   const imgs = data.images || [];
   $('galleryList').innerHTML = imgs.length ? imgs.map((im, i) =>
-    '<figure data-i="' + i + '"><img src="' + esc(im.file) + '" alt="' + esc(im.caption || '') + '" loading="lazy">' +
+    '<figure class="rv" data-i="' + i + '"><img src="' + esc(im.file) + '" alt="' + esc(im.caption || '') + '" loading="lazy">' +
     (im.caption ? '<figcaption>' + esc(im.caption) + '</figcaption>' : '') + '</figure>').join('')
-    : '<p class="empty-note">写真は準備中です。</p>';
+    : '<p class="empty-note rv">写真は準備中です。</p>';
   const lb = $('lightbox');
   $('galleryList').addEventListener('click', e => {
     const f = e.target.closest('figure'); if (!f) return;
@@ -187,14 +248,20 @@
   lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-  /* footer */
-  $('footName').textContent = p.name || '';
+  /* ---- footer ---- */
   $('footContact').innerHTML = [
     p.title ? esc(p.title) : '',
     p.email ? '<a href="mailto:' + esc(p.email) + '">' + esc(p.email) + '</a>' : '',
     p.phone ? '<a href="tel:' + esc(p.phone.replace(/[^\d+]/g, '')) + '">' + esc(p.phone) + '</a>' : ''
   ].filter(Boolean).join('<br>');
   $('copy').textContent = '© ' + new Date().getFullYear() + ' ' + (p.name || '');
+
+  /* ---- scroll reveal ---- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: .08 });
+  document.querySelectorAll('.section').forEach(s => io.observe(s));
+  document.querySelectorAll('.timeline li, .gallery figure').forEach(el => io.observe(el));
 })();
 </script>
 </body>

@@ -58,6 +58,7 @@
     <div class="dash-head">
       <nav class="tabs" id="tabs">
         <button data-tab="docs" class="on">資料</button>
+        <button data-tab="videos">動画</button>
         <button data-tab="links">サイト</button>
         <button data-tab="images">写真</button>
         <button data-tab="profile">プロフィール</button>
@@ -80,6 +81,19 @@
         </div>
       </div>
       <ul class="items" id="docItems"></ul>
+    </section>
+
+    <!-- 動画 -->
+    <section class="pane" data-pane="videos">
+      <div class="add-box">
+        <h2>動画を追加</h2>
+        <div class="drop" id="vidDrop">
+          <input type="file" id="vidFile" accept="video/mp4,video/quicktime,.mp4,.mov" multiple hidden>
+          <p>ここに動画（mp4）をドロップ、または <button class="link" type="button" id="vidPick">ファイルを選ぶ</button></p>
+          <p class="hint">1ファイル 60MB まで。サムネイルは動画の冒頭から自動で作ります（あとで「サムネ」ボタンから差し替え可）。大きいファイルは送信に数分かかります。</p>
+        </div>
+      </div>
+      <ul class="items" id="vidItems"></ul>
     </section>
 
     <!-- サイト -->
@@ -119,6 +133,8 @@
             <input type="file" id="profPhotoFile" accept="image/*" hidden>
             <button class="ghost" type="button" id="profPhotoPick">写真を変更</button>
             <button class="ghost" type="button" id="profPhotoClear">写真を外す</button>
+            <label class="check"><input type="checkbox" id="pCutout"> 背景透過の切り抜き写真として表示</label>
+            <label class="check"><input type="checkbox" id="pIntro"> オープニング動画を再生する</label>
           </div>
           <div class="fields">
             <label>名前<input id="pName"></label>
