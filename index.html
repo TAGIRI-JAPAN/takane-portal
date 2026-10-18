@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>髙根 未来 | ポータル</title>
-<meta name="description" content="髙根 未来の資料・動画・サイト・写真をまとめたポータルです。">
+<meta name="description" content="髙根 未来の自己紹介ポータルです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:ital,wght@0,500;0,700;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -25,8 +25,7 @@
   <div class="wrap">
     <a class="brand" href="#"><img src="assets/lettering/tagiru.png" alt="滾"><span id="brandName">髙根 未来</span></a>
     <nav class="nav">
-      <a href="#profile">プロフィール</a>
-      <a href="#docs">資料</a>
+      <a href="#profile">自己紹介</a>
       <a href="#videos">動画</a>
       <a href="#links">サイト</a>
       <a href="#gallery">写真</a>
@@ -55,7 +54,8 @@
 <main>
   <section class="section" id="profile">
     <div class="wrap">
-      <div class="section-head rv"><h2>プロフィール</h2><span>Profile</span></div>
+      <div class="section-head rv"><h2>自己紹介</h2><span>About me</span></div>
+      <ul class="works" id="works"></ul>
       <div class="profile">
         <div class="message rv" id="message"></div>
         <ol class="timeline" id="timeline"></ol>
@@ -63,12 +63,6 @@
     </div>
   </section>
 
-  <section class="section" id="docs">
-    <div class="wrap">
-      <div class="section-head rv"><h2>資料</h2><span>Documents</span><span class="count" id="docCount"></span></div>
-      <ul class="docs" id="docList"></ul>
-    </div>
-  </section>
 
   <section class="section" id="videos">
     <div class="wrap">
@@ -180,6 +174,12 @@
   $('marquee').innerHTML = row + row;
 
   /* ---- profile ---- */
+  const works = p.works || [];
+  $('works').innerHTML = works.map(w => {
+    const inner = '<span class="sub">' + esc(w.sub) + '</span><h3>' + esc(w.title) + '</h3><p>' + esc(w.text) + '</p>';
+    return '<li class="rv">' + (w.url ? '<a class="work" href="' + esc(w.url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<div class="work">' + inner + '</div>') + '</li>';
+  }).join('');
+  if (!works.length) $('works').remove();
   const paras = String(p.message || '').split(/\n+/).filter(Boolean).map(t => '<p>' + esc(t) + '</p>');
   if (paras.length) paras.push('<p class="sign"><img src="assets/lettering/name.png" alt="' + esc(p.name) + '"></p>');
   $('message').innerHTML = paras.join('');
@@ -187,19 +187,6 @@
     '<li class="rv"><span class="year">' + esc(t.year) + '</span>' + esc(t.text) + '</li>').join('');
   if (!paras.length && !(p.timeline || []).length) $('profile').remove();
 
-  /* ---- documents ---- */
-  const docs = data.documents || [];
-  $('docCount').textContent = docs.length ? docs.length + '件' : '';
-  $('docList').innerHTML = docs.length ? docs.map(d => {
-    const thumb = d.thumb ? '<img src="' + esc(d.thumb) + '" alt="">' : ICON.pdf;
-    const meta = [d.size, d.date].filter(Boolean).map(esc).join('　');
-    return '<li class="doc rv">' +
-      '<div class="doc-thumb">' + thumb + '</div>' +
-      '<div><h3>' + esc(d.title) + '</h3>' + (d.description ? '<p>' + esc(d.description) + '</p>' : '') +
-      (meta ? '<div class="meta">' + meta + '</div>' : '') + '</div>' +
-      '<a class="btn" href="' + esc(d.file) + '" target="_blank" rel="noopener" download>' + ICON.dl + '開く / 保存</a>' +
-      '</li>';
-  }).join('') : '<li class="empty-note rv">資料は準備中です。</li>';
 
   /* ---- videos ---- */
   const vids = data.videos || [];
