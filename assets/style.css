@@ -50,7 +50,7 @@ li { margin: .25em 0; }
 /* ===== Hero ===== */
 .hero { position: relative; overflow: hidden; background: var(--paper); }
 .hero .mark { position: absolute; right: -6vw; top: 50%; transform: translateY(-50%); width: min(50vw, 560px); opacity: .06; pointer-events: none; }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr minmax(320px, 480px); gap: 56px; align-items: center; min-height: calc(100svh - 58px); padding-top: 56px; padding-bottom: 64px; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr minmax(320px, 480px); gap: 56px; align-items: center; padding-top: 28px; padding-bottom: 20px; }
 .hero-text { min-width: 0; }
 .lettering-title { height: 36px; width: auto; margin-bottom: 14px; }
 .lettering-name { width: min(100%, 440px); height: auto; }
@@ -362,3 +362,9 @@ body.ready .card.rise { opacity: 1; transform: none; }
 .sns { flex: 1; justify-content: flex-end; gap: 22px; }
 .sns img { height: 22px; }
 @media (max-width: 860px) { .contact .wrap { flex-wrap: wrap; } .sns { justify-content: center; } }
+
+.hero .wrap { padding-top: 28px; padding-bottom: 16px; gap: 20px 44px; }
+.hero-facts { margin-top: 20px; }
+.tagline { margin-top: 20px; }
+.contact-btn { margin-top: 18px; }
+.lettering-title { margin-bottom: 10px; }
