@@ -381,3 +381,27 @@ html[lang="en"] .nav a, html[lang="en"] .card span, html[lang="en"] .facts dt, h
 html[lang="en"] .quotes li { font-size: 16px; text-indent: 0; padding-left: 0; }
 html[lang="en"] .band-text { letter-spacing: .02em; }
 .side.cutout video { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 24px 48px -28px rgba(15,31,58,.45); }
+
+/* ===== language nav & per-language fonts ===== */
+.nav { gap: 16px; }
+.nav a.nav-lang { padding: 2px 9px; font-size: 11.5px; letter-spacing: .06em; margin-left: -6px; }
+.nav a.nav-lang + a.nav-lang { margin-left: -10px; }
+.nav a.nav-contact + a.nav-lang { margin-left: 6px; }
+html[lang="zh-Hans"] { --font-display: "Noto Serif SC", "Shippori Mincho", serif; --font-body: "Noto Sans SC", "Zen Kaku Gothic New", sans-serif; }
+html[lang="ko"] { --font-display: "Noto Serif KR", serif; --font-body: "Noto Sans KR", sans-serif; }
+html[lang="ko"] body { word-break: keep-all; letter-spacing: -.01em; }
+html[lang="vi"] { --font-display: "Noto Serif", serif; --font-body: "Be Vietnam Pro", sans-serif; }
+html[lang="vi"] body { letter-spacing: 0; }
+html[lang="vi"] .reading .kana { letter-spacing: .1em; font-size: 17px; }
+html[lang="vi"] .reading .roman { font-style: normal; letter-spacing: .02em; }
+html[lang="vi"] .tagline { letter-spacing: .02em; font-style: italic; }
+html[lang="vi"] .section h2, html[lang="vi"] .nav a, html[lang="vi"] .card span, html[lang="vi"] .facts dt, html[lang="vi"] .hero-facts dt { letter-spacing: .01em; }
+html[lang="vi"] .quotes li, html[lang="en"] .quotes li { text-indent: 0; padding-left: 0; }
+html[lang="ko"] .reading .kana, html[lang="zh-Hans"] .reading .kana { letter-spacing: .3em; }
+html[lang="ko"] .section h2, html[lang="zh-Hans"] .section h2 { letter-spacing: .04em; }
+@media (max-width: 640px) { .nav a.nav-lang { display: none; } .nav a.nav-lang:first-of-type { display: inline-block; } }
+.reading { flex-wrap: wrap; row-gap: 4px; }
+.reading .kana { white-space: nowrap; }
+html[lang="ko"] .reading .kana, html[lang="zh-Hans"] .reading .kana { letter-spacing: .2em; }
+html[lang="ko"] .reading .roman, html[lang="zh-Hans"] .reading .roman { font-style: normal; letter-spacing: .04em; white-space: nowrap; }
+html[lang="ko"] .tagline, html[lang="zh-Hans"] .tagline { letter-spacing: .1em; }
