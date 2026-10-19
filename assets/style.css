@@ -339,3 +339,26 @@ body.ready .card.rise { opacity: 1; transform: none; }
 .hero-video video { aspect-ratio: 4/3; }
 .hero .mark { display: none; }
 @media (max-width: 880px) { .hero .wrap { padding-top: 20px; padding-bottom: 20px; gap: 18px; } }
+
+/* ===== contact ===== */
+.nav a.nav-contact { color: var(--kin); font-weight: 700; }
+.contact-btn { display: inline-flex; align-items: baseline; gap: 10px; margin-top: 22px; padding: 12px 22px; background: var(--ai); color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 16px; letter-spacing: .08em; border-radius: 4px; border: 1px solid var(--ai); transition: background .25s, transform .25s var(--ease); }
+.contact-btn span { font-size: 11px; letter-spacing: .14em; color: var(--kin-soft, #e6b74a); font-family: var(--font-body); }
+.contact-btn:hover { background: var(--ai-soft); transform: translateY(-1px); }
+.contact-btn.rise { display: inline-flex; }
+.contact { background: var(--white); border-bottom: 1px solid var(--line); }
+.contact .wrap { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-top: 22px; padding-bottom: 22px; flex-wrap: wrap; }
+.contact-main { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); padding: 14px 26px; border: 2px solid var(--kin); border-radius: 6px; background: linear-gradient(135deg, rgba(207,150,28,.14), rgba(207,150,28,.04)); transition: transform .3s var(--ease), box-shadow .3s; }
+.contact-main:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -18px rgba(207,150,28,.6); }
+.contact-label { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: .08em; color: var(--ai); }
+.contact-sub { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+.sns { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.sns a { display: block; opacity: .9; transition: opacity .2s, transform .3s var(--ease); }
+.sns a:hover { opacity: 1; transform: translateY(-2px); }
+.sns img { height: 26px; width: auto; }
+@media (max-width: 760px) { .contact .wrap { justify-content: center; text-align: center; } .contact-main { width: 100%; align-items: center; } .sns { justify-content: center; gap: 18px; } .sns img { height: 20px; } }
+.contact .wrap { flex-wrap: nowrap; }
+.contact-main { flex: 0 0 auto; }
+.sns { flex: 1; justify-content: flex-end; gap: 22px; }
+.sns img { height: 22px; }
+@media (max-width: 860px) { .contact .wrap { flex-wrap: wrap; } .sns { justify-content: center; } }
