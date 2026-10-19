@@ -46,7 +46,13 @@
         <source src="assets/hero-loop.webm" type="video/webm">
       </video>
     </div>
-    <div class="hero-brand rise"><img src="assets/lettering/tagiri-gold.png" alt="株式会社TAGIRI 滾"></div>
+  </div>
+  <div class="brush rise" id="brush">
+    <video id="brushVideo" muted playsinline preload="auto" poster="assets/intro-end.jpg">
+      <source src="assets/intro.mp4" type="video/mp4">
+      <source src="assets/intro.webm" type="video/webm">
+    </video>
+    <button class="replay" id="brushReplay" type="button" aria-label="もう一度再生">↻</button>
   </div>
 </section>
 
@@ -229,12 +235,10 @@
           <blockquote>「会社の技術や取り組みを、もっと多くの人に知ってもらいたいと思っていませんか。キーエンスで製造業の営業を経験し、今は製造業専門の情報メディア『TAKUMI～匠～』を運営している髙根さんという方がいます。製造業の会社だけでなく、製造業向けのサービス企業や、大手メーカーの調達・開発・研究の方、大学などの研究機関とのつながりも探されています。一度おつなぎしましょうか。」</blockquote>
         </div>
         <div class="rv wide golden">
-          <p class="golden-lead">いちばん大切なお願いです。こんな方をご紹介ください。</p>
           <div class="golden-grid">
             <div class="golden-box">
               <h3><span class="egg">🥚</span>金の卵</h3>
-              <p class="golden-sub">直接お客さまになっていただきたい方</p>
-              <ol>
+                            <ol>
                 <li>製造業の会社</li>
                 <li>製造業にサービスを提供している会社</li>
                 <li>大手製造業の調達・開発・研究職の方</li>
@@ -243,8 +247,7 @@
             </div>
             <div class="golden-box">
               <h3><span class="egg">🪿</span>金のガチョウ</h3>
-              <p class="golden-sub">金の卵をたくさんご存じの方</p>
-              <ol>
+                            <ol>
                 <li>製造業とつながりのある方、士業の方</li>
                 <li>大手企業出身者</li>
                 <li>大学生（特に理系）</li>
@@ -304,13 +307,6 @@
     <div class="wrap"><p class="band-text rv">現場を知ること、相手の話を聞くこと、<br>考えたことを実際に動く形にすること。</p></div>
   </div>
 
-  <div class="brush" id="brush">
-    <video id="brushVideo" muted playsinline preload="metadata" poster="assets/intro-end.jpg">
-      <source src="assets/intro.mp4" type="video/mp4">
-      <source src="assets/intro.webm" type="video/webm">
-    </video>
-    <button class="replay" id="brushReplay" type="button" aria-label="もう一度再生">↻</button>
-  </div>
 
   <section class="section photo" id="works" style="--img:url(../uploads/bg/factory-sunset.jpg)">
     <div class="wrap">
@@ -381,8 +377,8 @@
   const bv = $('brushVideo');
   let played = false;
   const bio = new IntersectionObserver(en => {
-    if (en[0].isIntersecting && !played) { played = true; bv.play().catch(() => {}); }
-  }, { threshold: .5 });
+    if (en[0].isIntersecting && !played) { played = true; setTimeout(() => bv.play().catch(() => {}), 400); }
+  }, { threshold: .3 });
   bio.observe(bv);
   $('brushReplay').addEventListener('click', () => { bv.currentTime = 0; bv.play().catch(() => {}); });
   bv.addEventListener('ended', () => $('brush').classList.add('ended'));
