@@ -430,3 +430,65 @@ html[lang="ko"] .tagline, html[lang="zh-Hans"] .tagline { letter-spacing: .1em; 
 .hero-text .watch-btn { margin-top: 18px; padding: 11px 18px 11px 12px; }
 .hero-text .contact-btn { padding: 11px 20px; }
 @media (max-width: 520px) { .hero-text .contact-btn + .watch-btn { margin-left: 0; margin-top: 10px; } }
+
+/* ===== MOBILE OVERRIDES (must stay at the end of this file) ===== */
+@media (max-width: 880px) {
+  .hero .wrap { grid-template-columns: 1fr !important; grid-template-rows: auto auto !important; gap: 18px !important; padding-top: 18px !important; padding-bottom: 22px !important; min-height: 0 !important; }
+  .hero-video { grid-row: 1 !important; grid-column: 1 !important; }
+  .hero-text { grid-row: 2 !important; grid-column: 1 !important; padding-bottom: 0; }
+  .hero-video video { aspect-ratio: 4/3; }
+  .lettering-name { width: min(100%, 340px); }
+  .hero-facts div { grid-template-columns: 5.5em 1fr; }
+  .hero .brush video { max-height: 48vh; }
+  .split { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .side { position: static !important; max-width: 100%; margin: 0; }
+  .side-stack { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  .side-stack img { min-height: 0 !important; aspect-ratio: 4/3 !important; }
+  .side.cutout { max-width: 320px; margin: 0 auto; }
+  .contact .wrap { flex-wrap: wrap !important; justify-content: center; }
+  .contact-main { width: 100%; align-items: center; }
+  .sns { justify-content: center !important; gap: 16px !important; }
+  .sns img { height: 18px !important; }
+}
+@media (max-width: 760px) {
+  .cards .wrap { grid-template-columns: 1fr 1fr !important; gap: 10px !important; padding-top: 18px !important; padding-bottom: 18px !important; }
+  .cards .wrap::before { display: none; }
+  .card { padding: 16px 10px 14px !important; flex-direction: column !important; text-align: center !important; gap: 4px !important; }
+  .card svg { width: 30px !important; height: 30px !important; margin: 0 0 4px !important; }
+  .card span { font-size: 14px !important; }
+  .card small { margin: 0 !important; font-size: 11.5px !important; }
+  .videos { grid-template-columns: 1fr !important; }
+  .video-card.featured .frame { aspect-ratio: 16/9 !important; max-height: none !important; }
+  .work-grid, .three, .gains, .ask-grid, .golden-grid, .quotes { grid-template-columns: 1fr !important; }
+  .two-col { columns: 1 !important; }
+  .facts > div { grid-template-columns: 1fr !important; gap: 2px !important; }
+  .facts dt { font-size: 14px; }
+  .section.photo { padding: 36px 0 !important; }
+  .section.photo .wrap { padding: 24px 18px 28px !important; margin: 0 10px !important; }
+  .section h2 { font-size: 24px !important; margin-bottom: 22px !important; }
+  .golden { padding: 22px 16px 18px !important; }
+  .golden-box { padding: 18px 16px 14px !important; }
+  .golden-box ol { font-size: 15px !important; }
+  .band { min-height: 260px !important; }
+  .band-text { font-size: 19px !important; line-height: 1.7 !important; }
+  .strip img { height: 80px !important; }
+  .bh { height: 120px !important; }
+  .hero-text .contact-btn, .hero-text .watch-btn { display: flex !important; width: 100%; justify-content: center; margin-left: 0 !important; }
+  .hero-text .watch-btn { margin-top: 10px !important; }
+  .foot.photo { padding: 48px 0 32px !important; }
+}
+@media (max-width: 640px) {
+  .top .wrap { height: 52px; }
+  .nav { gap: 12px !important; }
+  .nav a { font-size: 12.5px !important; }
+  .nav a.nav-lang { display: none !important; }
+  .nav a.nav-contact + a.nav-lang { display: inline-block !important; margin-left: 2px !important; }
+  .brand span { display: none; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 640px) {
+  .top .wrap { gap: 8px; }
+  .nav { gap: 10px !important; flex: 1; min-width: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-right: 8px; }
+  .nav a { font-size: 12px !important; flex: 0 0 auto; }
+  .nav a.nav-contact { padding-right: 4px; }
+}
