@@ -413,3 +413,20 @@ html[lang="ko"] .tagline, html[lang="zh-Hans"] .tagline { letter-spacing: .1em; 
   mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
   mask-composite: intersect;
 }
+/* hero watch button */
+.hero-text .contact-btn + .watch-btn { margin-left: 10px; }
+.watch-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 11px 20px 11px 14px; border: 1px solid var(--ai); border-radius: 4px; color: var(--ai); text-decoration: none; font-family: var(--font-display); font-size: 15px; letter-spacing: .06em; background: var(--white); transition: background .25s, color .25s, transform .25s var(--ease); }
+.watch-btn b { width: 26px; height: 26px; border-radius: 50%; background: var(--kin); display: grid; place-items: center; }
+.watch-btn b::after { content: ""; border-left: 9px solid #fff; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; }
+.watch-btn:hover { background: var(--ai); color: #fff; transform: translateY(-1px); }
+.watch-btn.rise { display: inline-flex; }
+.videos { grid-template-columns: repeat(3, 1fr); }
+.video-card.featured { grid-column: 1 / -1; }
+.video-card.featured .frame { aspect-ratio: 16/9; max-height: 70vh; }
+.video-card.featured h3 { font-size: 22px; }
+@media (max-width: 760px) { .videos { grid-template-columns: 1fr; } }
+.hero-text .contact-btn, .hero-text .watch-btn { vertical-align: top; }
+.hero-text .contact-btn + .watch-btn { margin-left: 10px; }
+.hero-text .watch-btn { margin-top: 18px; padding: 11px 18px 11px 12px; }
+.hero-text .contact-btn { padding: 11px 20px; }
+@media (max-width: 520px) { .hero-text .contact-btn + .watch-btn { margin-left: 0; margin-top: 10px; } }
