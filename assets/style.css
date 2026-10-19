@@ -225,15 +225,9 @@ body.ready .card.rise { opacity: 1; transform: none; }
 /* ===== full-bleed image bands ===== */
 .band { position: relative; min-height: 440px; display: grid; align-items: end; background: var(--img) var(--pos, center)/cover no-repeat; overflow: hidden; }
 .band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,31,58,0) 30%, rgba(15,31,58,.78) 100%); }
-.band .wrap { position: relative; z-index: 1; padding-top: 60px; padding-bottom: 44px; width: 100%; }
+.band .wrap { position: relative; z-index: 1; padding-top: 72px; padding-bottom: 36px; width: 100%; }
 .band-text { font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 2.6vw, 30px); line-height: 1.8; letter-spacing: .06em; color: #fff; margin: 0; text-shadow: 0 2px 20px rgba(0,0,0,.35); }
 @media (max-width: 860px) { .band { min-height: 300px; } }
-
-/* ===== dark section with photo ===== */
-.section.dark.photo { position: relative; overflow: hidden; }
-.section.dark.photo::before { content: ""; position: absolute; inset: 0; background: var(--img) center/cover no-repeat; opacity: .16; filter: saturate(.7); }
-.section.dark.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, var(--ai-deep) 0%, rgba(15,31,58,.6) 40%, rgba(15,31,58,.6) 60%, var(--ai-deep) 100%); }
-.section.dark.photo .wrap { position: relative; z-index: 1; }
 
 /* ===== brush-writing band ===== */
 .brush { position: relative; background: #000; display: grid; place-items: center; }
@@ -241,3 +235,36 @@ body.ready .card.rise { opacity: 1; transform: none; }
 .brush .replay { position: absolute; right: 18px; bottom: 18px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.4); color: #fff; font-size: 18px; opacity: 0; transition: opacity .3s; }
 .brush.ended .replay { opacity: .85; }
 .brush .replay:hover { opacity: 1; background: var(--kin); border-color: var(--kin); }
+
+/* ===== photo sections (illustration background + glass panel) ===== */
+.section.photo { position: relative; overflow: hidden; padding: 72px 0; border-top: 0; }
+.section.photo::before { content: ""; position: absolute; inset: 0; background: var(--img) var(--pos, center)/cover no-repeat; }
+.section.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(243,244,247,.35), rgba(243,244,247,.15) 40%, rgba(243,244,247,.55)); }
+.section.photo .wrap { position: relative; z-index: 1; background: rgba(255,255,255,.84); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.7); padding: 48px 52px 52px; box-shadow: 0 30px 60px -30px rgba(15,31,58,.35); }
+.section.dark.photo::after { background: linear-gradient(180deg, rgba(10,20,40,.55), rgba(10,20,40,.45) 50%, rgba(10,20,40,.7)); }
+.section.dark.photo .wrap { background: rgba(12,24,48,.72); border-color: rgba(255,255,255,.12); }
+.section.photo + .section.photo { border-top: 0; }
+.section.photo .facts > div:last-child { border-bottom: 0; }
+@media (max-width: 640px) { .section.photo { padding: 40px 0; } .section.photo .wrap { padding: 28px 20px 32px; margin: 0 12px; } }
+
+/* image header in cards */
+.bh { height: 150px; margin: -24px -26px 18px; background: var(--img) center/cover no-repeat; }
+.gain, .box { overflow: hidden; }
+.box .bh { margin-top: -27px; }
+.three .box { border-top: 0; }
+.gain .bh { height: 160px; }
+
+/* travel strip */
+.strip { position: relative; z-index: 1; overflow: hidden; padding: 0 0 28px; }
+.strip-track { display: flex; gap: 12px; width: max-content; animation: strip 60s linear infinite; }
+.strip img { height: 130px; width: auto; border-radius: 4px; box-shadow: 0 10px 24px -12px rgba(0,0,0,.6); }
+@keyframes strip { to { transform: translateX(-50%); } }
+.band .strip { margin-top: -10px; }
+@media (max-width: 640px) { .strip img { height: 90px; } }
+@media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } }
+
+/* footer with photo */
+.foot.photo { background: var(--img) center 65%/cover no-repeat; padding: 80px 0 48px; }
+.foot.photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,9,14,.35), rgba(7,9,14,.85)); }
+.foot.photo .fname img { filter: brightness(2.2) drop-shadow(0 2px 10px rgba(0,0,0,.6)); height: 52px; }
+.foot.photo .mark { display: none; }
