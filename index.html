@@ -12,14 +12,7 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2307090e'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' font-family='serif' font-weight='700' fill='%23cf961c'%3E滾%3C/text%3E%3C/svg%3E">
 </head>
-<body class="intro-on">
-
-<div class="intro" id="intro">
-  <video id="introVideo" muted playsinline preload="auto" poster="assets/intro-end.jpg">
-    <source src="assets/intro.mp4" type="video/mp4">
-  </video>
-  <button class="skip" id="introSkip" type="button">スキップ</button>
-</div>
+<body>
 
 <header class="top">
   <div class="wrap">
@@ -31,7 +24,6 @@
       <a href="#ask">ご紹介</a>
       <a href="#works">事業</a>
       <a href="#videos">動画</a>
-      <a href="#gallery">写真</a>
     </nav>
   </div>
 </header>
@@ -53,6 +45,7 @@
     <div class="hero-video rise">
       <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
         <source src="assets/hero-loop.mp4" type="video/mp4">
+        <source src="assets/hero-loop.webm" type="video/webm">
       </video>
     </div>
   </div>
@@ -73,7 +66,7 @@
     <a class="card rise" href="#works">
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 40V12l14-4v32M22 40V20l18-4v24M8 40h32"/><path d="M13 16h4M13 22h4M13 28h4M27 24h4M33 24h4M27 30h4M33 30h4"/></svg>
       <span>ビジネス概要</span>
-      <small>事業・動画</small>
+      <small>事業・目標・動画</small>
     </a>
   </div>
 </nav>
@@ -83,6 +76,7 @@
     <div class="wrap">
       <p class="part rv">メンバー略歴シート</p>
       <h2 class="rv">略歴</h2>
+      <div class="split">
       <dl class="facts rv">
         <div><dt>事業名</dt><dd>株式会社TAGIRI<br>製造業メディア「TAKUMI～匠～」</dd></div>
         <div><dt>専門分野</dt><dd>製造業専門の情報メディア。企業の技術や設備、取り組みを紹介し、ものづくりの価値を伝えています。<br>製造業の会社に加え、製造業にサービスを提供する会社、大手メーカーの調達・開発・研究に携わる方、大学などの研究機関とのつながりを広げています。</dd></div>
@@ -99,20 +93,29 @@
         <div><dt>その他の事業</dt><dd>日本語教育「タカネ式／TAKANE-SHIKI」の教材・学習サイトを制作しています。<br>スリランカでは教育・人材関連事業にも参画し、日本語学習や日本で働くための準備を支援しています。</dd></div>
         <div><dt>これまでの所属</dt><dd>横浜のRevivalチャプター</dd></div>
       </dl>
+      <figure class="side rv"><img src="uploads/images/denim-ota.jpg" alt="" loading="lazy"><figcaption>拠点の大田区にて</figcaption></figure>
+      </div>
     </div>
   </section>
+
+  <div class="band" style="--img:url(../uploads/images/suit-beach.jpg); --pos:center 22%">
+    <div class="wrap"><p class="band-text rv">海外49か国を訪れました。<br>特に韓国・ベトナム・イギリス・スリランカが好きです。</p></div>
+  </div>
 
   <section class="section" id="person">
     <div class="wrap">
       <h2 class="rv">人となり・大切にしていること</h2>
+      <div class="split">
       <dl class="facts rv">
         <div><dt>家族</dt><dd>一人っ子。母と猫と暮らしています。父は芸術活動と東洋哲学に関わり、愛媛県宇和島市と東京に拠点を置いています。</dd></div>
-        <div><dt>ペット</dt><dd>猫のフィガロ（マンチカン）と、柴犬のとんちゃん。</dd></div>
+        <div><dt>ペット</dt><dd>猫のフィガロ（マンチカン）と、うさぎ。</dd></div>
         <div><dt>趣味</dt><dd>海外旅行、語学、読書、映画、現代アート、ドライブ、水族館・動物園めぐり、愛猫と過ごすこと。<br>海外49か国を訪れた経験があり、特に韓国・ベトナム・イギリス・スリランカが好きです。読書は年間450冊以上。都内のおしゃれなご飯屋さんを探すことも好きです。</dd></div>
         <div><dt>その他の関心事</dt><dd>分子神経細胞学、教育、人の学びや成長、東洋哲学、異文化理解。製造業の技術や研究成果が、それを必要とする人に届くことにも関心があります。</dd></div>
         <div><dt>出身地</dt><dd>大阪府。大阪、埼玉県所沢市、名古屋市を経て、現在は東京都大田区を拠点に活動しています。</dd></div>
-        <div><dt>居住地</dt><dd>東京都大田区。スリランカでも事業活動を行っています。</dd></div>
+        <div><dt>居住地</dt><dd>東京都大田区。スリランカでも事業活動を行っています。ベトナム・韓国にも拠点を準備中です。</dd></div>
       </dl>
+      <figure class="side cutout rv"><img src="uploads/images/with-cat-and-rabbit.png" alt="" loading="lazy"><figcaption>フィガロと、うさぎと</figcaption></figure>
+      </div>
       <div class="three rv">
         <div class="box">
           <h3>強い願望</h3>
@@ -132,6 +135,10 @@
       </div>
     </div>
   </section>
+
+  <div class="band" style="--img:url(../uploads/images/denim-hitech.jpg); --pos:center 18%">
+    <div class="wrap"><p class="band-text rv">現場を知ること、相手の話を聞くこと、<br>考えたことを実際に動く形にすること。</p></div>
+  </div>
 
   <section class="section" id="gains">
     <div class="wrap">
@@ -188,7 +195,7 @@
     </div>
   </section>
 
-  <section class="section dark" id="ask">
+  <section class="section dark photo" id="ask" style="--img:url(../uploads/images/suit-cafe.jpg)">
     <div class="wrap">
       <h2 class="rv">強みと、ご紹介いただきたい方</h2>
       <div class="ask-grid">
@@ -266,6 +273,14 @@
     </div>
   </section>
 
+  <div class="brush" id="brush">
+    <video id="brushVideo" muted playsinline preload="metadata" poster="assets/intro-end.jpg">
+      <source src="assets/intro.mp4" type="video/mp4">
+      <source src="assets/intro.webm" type="video/webm">
+    </video>
+    <button class="replay" id="brushReplay" type="button" aria-label="もう一度再生">↻</button>
+  </div>
+
   <section class="section" id="works">
     <div class="wrap">
       <p class="part rv">ビジネス概要</p>
@@ -315,23 +330,6 @@
     </div>
   </section>
 
-  <section class="section" id="gallery">
-    <div class="wrap">
-      <h2 class="rv">写真</h2>
-      <div class="gallery" id="galleryList">
-        <figure class="rv"><img src="uploads/images/with-cat-and-rabbit.png" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/denim-ota.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/suit-beach.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/night-city.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/denim-hitech.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/suit-cafe.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/watercolor-city.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/seaside-cafe.jpg" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/watercolor-writing.png" alt="" loading="lazy"></figure>
-        <figure class="rv"><img src="uploads/images/writing.png" alt="" loading="lazy"></figure>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="foot">
@@ -342,36 +340,22 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="close" id="lbClose" aria-label="閉じる">✕</button>
-  <figure><img id="lbImg" alt=""></figure>
-</div>
 
 <script>
 (function () {
   const $ = (id) => document.getElementById(id);
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
 
-  /* opening */
-  const intro = $('intro'), iv = $('introVideo');
-  let done = false;
-  function finishIntro() {
-    if (done) return; done = true;
-    try { sessionStorage.setItem('tp_intro_seen', '1'); } catch (e) {}
-    intro.classList.add('done');
-    document.body.classList.remove('intro-on');
-    requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
-    setTimeout(() => intro.remove(), 1300);
-  }
-  let seen = false; try { seen = !!sessionStorage.getItem('tp_intro_seen'); } catch (e) {}
-  if (seen || reduced) {
-    intro.remove(); document.body.classList.remove('intro-on'); document.body.classList.add('ready'); done = true;
-  } else {
-    iv.addEventListener('ended', () => setTimeout(finishIntro, 500));
-    $('introSkip').addEventListener('click', finishIntro);
-    const t = setTimeout(finishIntro, 16000);
-    iv.play().catch(() => { clearTimeout(t); finishIntro(); });
-  }
+  /* brush-writing video: play once when scrolled into view */
+  const bv = $('brushVideo');
+  let played = false;
+  const bio = new IntersectionObserver(en => {
+    if (en[0].isIntersecting && !played) { played = true; bv.play().catch(() => {}); }
+  }, { threshold: .5 });
+  bio.observe(bv);
+  $('brushReplay').addEventListener('click', () => { bv.currentTime = 0; bv.play().catch(() => {}); });
+  bv.addEventListener('ended', () => $('brush').classList.add('ended'));
+  bv.addEventListener('play', () => $('brush').classList.remove('ended'));
 
   /* videos */
   $('videoList').addEventListener('click', e => {
@@ -382,22 +366,11 @@
     f.innerHTML = '<video controls autoplay playsinline src="' + card.dataset.src + '" poster="' + card.dataset.poster + '"></video>';
   });
 
-  /* gallery */
-  const lb = $('lightbox');
-  $('galleryList').addEventListener('click', e => {
-    const img = e.target.closest('figure img'); if (!img) return;
-    $('lbImg').src = img.src; lb.classList.add('open');
-  });
-  const closeLb = () => lb.classList.remove('open');
-  $('lbClose').addEventListener('click', closeLb);
-  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
-
   /* scroll reveal */
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .05 });
-  document.querySelectorAll('.section, .gallery figure').forEach(s => io.observe(s));
+  document.querySelectorAll('.section, .band').forEach(s => io.observe(s));
 })();
 </script>
 </body>
