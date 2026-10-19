@@ -380,3 +380,4 @@ html[lang="en"] .section h2 { letter-spacing: .02em; }
 html[lang="en"] .nav a, html[lang="en"] .card span, html[lang="en"] .facts dt, html[lang="en"] .hero-facts dt { letter-spacing: .02em; }
 html[lang="en"] .quotes li { font-size: 16px; text-indent: 0; padding-left: 0; }
 html[lang="en"] .band-text { letter-spacing: .02em; }
+.side.cutout video { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 24px 48px -28px rgba(15,31,58,.45); }
