@@ -492,3 +492,13 @@ html[lang="ko"] .tagline, html[lang="zh-Hans"] .tagline { letter-spacing: .1em; 
   .nav a { font-size: 12px !important; flex: 0 0 auto; }
   .nav a.nav-contact { padding-right: 4px; }
 }
+
+/* ===== documents row (quiet, above footer) ===== */
+.docs-row { background: var(--paper); border-top: 1px solid var(--line); }
+.docs-row .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; padding-top: 16px; padding-bottom: 16px; font-size: 13.5px; }
+.docs-label { font-family: var(--font-display); font-weight: 700; color: var(--ink-3); letter-spacing: .1em; font-size: 12.5px; }
+.docs-row a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; display: inline-flex; align-items: center; gap: 6px; }
+.docs-row a::before { content: ""; width: 11px; height: 13px; border: 1.3px solid currentColor; border-radius: 2px; opacity: .6; }
+.docs-row a:hover { color: var(--ai); border-color: var(--kin); }
+.docs-note { font-size: 11.5px; color: var(--ink-3); margin-left: auto; }
+@media (max-width: 640px) { .docs-row .wrap { flex-direction: column; align-items: flex-start; gap: 8px; } .docs-note { margin-left: 0; } }
